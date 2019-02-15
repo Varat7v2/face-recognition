@@ -87,7 +87,7 @@ def face_recognizer():
 	        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3) 
 	  
 	        if prediction[1]<500: 
-	        	cv2.putText(img, '% s - %.0f' % (names[prediction[0]], prediction[1]), (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0)) 
+	        	cv2.putText(img, '% s - %.0f' % (names[prediction[0]], prediction[1]), (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0)) 
 	        else:
 	        	cv2.putText(img, 'not recognized', (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0)) 
 	  
@@ -102,6 +102,7 @@ def face_recognizer():
 if __name__ == '__main__':
 	case = raw_input("Do you want to capture your photo? y or n --> ")
 	print('Please press"q" to close the webcam')
+	print('It is build with Python 2 version')
 	if case == 'y':
 		capture_train()
 	face_recognizer()
