@@ -8,23 +8,22 @@ import numpy as np
 #all the images will be in datasets folder
 datasets = 'images'
 
-face_cascade = cv2.CascadeClassifier('/home/varat/Desktop/myCVfolder/data/haarcascade_frontalface_alt2.xml')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+cascade_dir = os.path.join(BASE_DIR, "data")
+face_cascade = cv2.CascadeClassifier(cascade_dir + "/"+"haarcascade_frontalface_alt2.xml")
+
 webcam = cv2.VideoCapture(0)
 
 ### FUNCTION: FOR FETCHING THE IMAGES AND TRAINING THE MODEL
 def capture_train():
-
-
-
 	#sub-folder for storing specific images
-	#sub_folder = 'Hamma'
-	sub_folder=raw_input("Enter your name ")
+	sub_folder=raw_input("Enter your name: ")
 	path = os.path.join(datasets, sub_folder)
 	if not os.path.isdir(path):
 		os.mkdir(path)
 
 	#defining sizes of images
-	(width, height) = (150, 100)
+	(width, height) = (130, 100)
 
 
 	#the program loops unitil it has caputred 30 images
