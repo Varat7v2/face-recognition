@@ -36,7 +36,7 @@ def capture_train():
 		
 		for(x,y,w,h) in faces:
 			cv2.rectangle(img, (x,y), (x+w, y+h), (0,0,255), 2)
-			cv2.putText(img, 'Capturing Photo: Please rotate your face slightly', (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0))
+			cv2.putText(img, 'Capturing Photo & Training', (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (255, 0, 0))
 			face = gray[y:y+h, x:x+w]
 			face_resize = cv2.resize(face, (width, height))
 			cv2.imwrite('%s/% s.png' %(path, count), face_resize)
@@ -87,7 +87,7 @@ def face_recognizer():
 	        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3) 
 	  
 	        if prediction[1]<500: 
-	        	cv2.putText(img, '% s - %.0f' % (names[prediction[0]], prediction[1]), (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0)) 
+	        	cv2.putText(img, '% s - %.0f' % (names[prediction[0]], prediction[1]), (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1.5, (255, 0, 0)) 
 	        else:
 	        	cv2.putText(img, 'not recognized', (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0)) 
 	  
@@ -99,10 +99,19 @@ def face_recognizer():
 	webcam.release()
 	cv2.destroyAllWindows()
 
+def runOpenface():
+	## RUN THE OPENFACE:
+	os.system('/home/varat/OpenFace/build/bin/FeatureExtraction -verbose -device /dev/video0')
+	
 if __name__ == '__main__':
-	case = raw_input("Do you want to capture your photo? y or n --> ")
+	case = raw_input("Choose? 1:Caputure Photo and Train Model; 2:Face Recognition; 3:Run OpenFace? ")
 	print('Please press"q" to close the webcam')
 	print('It is build with Python 2 version')
-	if case == 'y':
+	if (case == '1'):
 		capture_train()
-	face_recognizer()
+	if (case == '2'):
+		face_recognizer()
+	if (case == '3'):
+		runOpenface();
+	else:
+		print('Choose one of the choice: 0, 1 or 2')
