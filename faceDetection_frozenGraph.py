@@ -57,6 +57,6 @@ class TensoflowFaceDector(object):
         self.inference_list.append(elapsed_time)
         self.count = self.count + 1
         average_inference = sum(self.inference_list)/self.count
-        print('Average inference time: {}'.format(average_inference))
+        # print('Average inference time: {}'.format(average_inference))
 
         return (boxes, scores, classes, num_detections)
