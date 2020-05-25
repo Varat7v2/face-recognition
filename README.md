@@ -6,7 +6,7 @@ There are two ways of adding people in to the known_persons directory.
 3. Once your photos are saved into known_persons directory, you can run the script `face_recognition_webcam.py` for face recognition
 
 ### Results
-1. After running `add_persons.py'
+1. After running `add_persons.py`
 ![Adding persons to known person database](images/add_persons.png)
 
 2. Face recongnition `face_recognition_webcam.py`
