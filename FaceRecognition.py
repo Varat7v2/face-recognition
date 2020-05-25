@@ -12,6 +12,7 @@ except Exception:
     quit()
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+face_detector = dlib.get_frontal_face_detector()
 pose_predictor_68_point = dlib.shape_predictor('model/shape_predictor_68_face_landmarks.dat')
 pose_predictor_5_point = dlib.shape_predictor('model/shape_predictor_5_face_landmarks.dat')
 face_encoder = dlib.face_recognition_model_v1('model/dlib_face_recognition_resnet_model_v1.dat')
