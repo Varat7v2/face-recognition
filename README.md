@@ -1,3 +1,4 @@
+Here are two methods of face detection, 1) Haar Cascade and 2) CNN Face Detection. For Haar Cascade based face recognition we can run `face_recognition_haarcascade.py` whereas for CNN based face recognition you can run `face_recognition_webcam.py`.
 ### Usuage
 There are two ways of adding people in to the known_persons directory.
 1. run `add_persons.py` and enter your name and then take your photo from webcam
