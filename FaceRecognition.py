@@ -13,9 +13,9 @@ except Exception:
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 face_detector = dlib.get_frontal_face_detector()
-pose_predictor_68_point = dlib.shape_predictor('model/shape_predictor_68_face_landmarks.dat')
-pose_predictor_5_point = dlib.shape_predictor('model/shape_predictor_5_face_landmarks.dat')
-face_encoder = dlib.face_recognition_model_v1('model/dlib_face_recognition_resnet_model_v1.dat')
+pose_predictor_68_point = dlib.shape_predictor('models/shape_predictor_68_face_landmarks.dat')
+pose_predictor_5_point = dlib.shape_predictor('models/shape_predictor_5_face_landmarks.dat')
+face_encoder = dlib.face_recognition_model_v1('models/dlib_face_recognition_resnet_model_v1.dat')
 
 def _rect_to_css(rect):
     """
@@ -60,7 +60,7 @@ def face_distance(face_encodings, face_to_compare):
     if len(face_encodings) == 0:
         return np.empty((0))
 
-    return np.linalg.norm(face_encodings - face_to_compare, axis=1)
+    return np.linalg.norm(face_encodings - face_to_compare, ord=None, axis=1)
 
 
 def load_image_file(file, mode='RGB'):
@@ -201,8 +201,11 @@ def face_encodings(face_image, known_face_locations=None, num_jitters=1, model="
     raw_landmarks = _raw_face_landmarks(face_image, known_face_locations, model)
     return [np.array(face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)) for raw_landmark_set in raw_landmarks]
 
+def myface_encodings(face_image, known_face_locations=None, num_jitters=1, model="large", landmarks_list):
+    return [np.array(face_encoder.compute_face_descriptor(face_image, raw_landmark_set, num_jitters)) for raw_landmark_set in landmarks_list]
 
-def compare_faces(known_face_encodings, face_encoding_to_check, tolerance=0.6):
+
+def compare_faces(known_face_encodings, face_encoding_to_check, tolerance=0.9):
     """
     Compare a list of face encodings against a candidate encoding to see if they match.
 

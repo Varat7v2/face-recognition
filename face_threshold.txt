@@ -1,0 +1,15 @@
+Min of auto_avg: 0.35169340504540336 
+Max of auto_avg: 0.5013623469405704 
+Min of cross_avg: 0.7894227618455367 
+Max of cross_avg: 0.9330003854045525 
+Avg of auto_avg: 0.4123692086943931 
+Avg of cross_avg: 0.8601381386521512 
+
+Min of auto_min: 0.09482777118682861 
+Max of auto_min: 0.2510600686073303 
+Avg of auto_min: 0.19253262877464294 
+Min of cross_min: 0.2934277653694153 
+Max of cross_min: 0.5959624648094177 
+Avg of cross_min: 0.42878668506940204 
+
+Threshold_face: [0.2510600686073303] (Best)
